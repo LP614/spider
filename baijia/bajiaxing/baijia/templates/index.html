@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>百家姓</title>
+</head>
+<body>
+<h1>百家姓</h1>
+<table width="300" border="1" cellpadding="0" cellspacing="0">
+    {% for good in page %}
+    <tr>
+        <td>姓名：{{ good.name}}</td>
+        <td>百家姓：{{ good.usename}}</td>
+    </tr>
+    {% endfor %}
+
+
+</table>
+<aside class="paging">
+    <a>当前{{ page.number }}页</a>
+    <a href="{% url 'home:index' %}">第一页</a>
+        {% for i in page.paginator.page_range %}
+            <a href="{% url 'home:index' %}?page={{ i }}">{{ i }}</a>
+        {% endfor %}
+    <a href="{% url 'home:index' %}?page={{ page.paginator.num_pages }}">最后一页</a>
+</aside>
+</body>
+</html>
